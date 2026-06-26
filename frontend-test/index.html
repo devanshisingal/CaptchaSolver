@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login with CAPTCHA</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .captcha-container {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .captcha-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Secure Login</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password">
+        </div>
+        
+        <div class="form-group captcha-container">
+            <label>Please enter the text below</label>
+            <!-- In a real scenario, this src would be an endpoint. We will just load a static test image for local testing -->
+            <img src="../backend/dataset/test/test_00000.png" alt="CAPTCHA Challenge" class="captcha-image" id="captchaImage">
+            
+            <div style="margin-top: 10px;">
+                <input type="text" name="captcha" id="captchaInput" placeholder="CAPTCHA">
+            </div>
+        </div>
+
+        <button type="submit">Log In</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Login attempted with CAPTCHA: ' + document.getElementById('captchaInput').value);
+    });
+</script>
+
+</body>
+</html>
