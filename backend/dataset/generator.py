@@ -4,7 +4,7 @@ import string
 import json
 import cv2
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter    
 import argparse
 
 def generate_random_text(length=5):
